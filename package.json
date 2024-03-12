@@ -23,7 +23,9 @@
         "jsonwebtoken": "^9.0.2",
         "mongodb": "^6.4.0",
         "mongoose": "^8.2.1",
-        "xss": "^1.0.15"
+        "swagger-ui-express": "^5.0.0",
+        "xss": "^1.0.15",
+        "yamljs": "^0.3.0"
     },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.6",
@@ -32,6 +34,8 @@
         "@types/jsonwebtoken": "^9.0.6",
         "@types/mongoose": "^5.11.97",
         "@types/node": "^20.11.24",
+        "@types/swagger-ui-express": "^4.1.6",
+        "@types/yamljs": "^0.2.34",
         "nodemon": "^3.1.0",
         "ts-node": "^10.9.2"
     },

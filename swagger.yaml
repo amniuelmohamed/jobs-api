@@ -1,0 +1,242 @@
+openapi: 3.0.0
+info:
+    title: Jobs API
+    contact: {}
+    version: "1.0"
+servers:
+    - url: https://jobs-api-gnqm.onrender.com/api/v1
+      variables: {}
+paths:
+    /jobs:
+        get:
+            tags:
+                - Jobs
+            summary: Get All Jobs
+            operationId: GetAllJobs
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+            security:
+                - bearer: []
+        post:
+            tags:
+                - Jobs
+            summary: Create Job
+            operationId: CreateJob
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: "#/components/schemas/CreateJobRequest"
+                                - example:
+                                      title: junior back-end developer
+                                      company: vertuoza
+                        example:
+                            title: junior back-end developer
+                            company: vertuoza
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+            security:
+                - bearer: []
+    /jobs/{id}:
+        parameters:
+            - in: path
+              name: id
+              schema:
+                  type: string
+              required: true
+              description: The job ID
+        get:
+            tags:
+                - Jobs
+            summary: Get Job By Id
+            operationId: GetJobById
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+            security:
+                - bearer: []
+
+        patch:
+            tags:
+                - Jobs
+            summary: Update Job
+            operationId: UpdateJob
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: "#/components/schemas/UpdateJobRequest"
+                                - example:
+                                      status: interview
+                        example:
+                            status: interview
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+            security:
+                - bearer: []
+
+        delete:
+            tags:
+                - Jobs
+            summary: Delete Job
+            operationId: DeleteJob
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+            security:
+                - bearer: []
+    /auth/login:
+        post:
+            tags:
+                - Auth
+            summary: Login
+            operationId: Login
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: "#/components/schemas/LoginRequest"
+                                - example:
+                                      email: mohamed1@gmail.com
+                                      password: "123456789"
+                        example:
+                            email: mohamed1@gmail.com
+                            password: "123456789"
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+            security: []
+    /auth/register:
+        post:
+            tags:
+                - Auth
+            summary: Register
+            operationId: Register
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: "#/components/schemas/RegisterRequest"
+                                - example:
+                                      name: abdo
+                                      email: abdo@gmail.com
+                                      password: "123456789"
+                        example:
+                            name: abdo
+                            email: abdo@gmail.com
+                            password: "123456789"
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+            security: []
+components:
+    schemas:
+        LoginRequest:
+            title: LoginRequest
+            required:
+                - email
+                - password
+            type: object
+            properties:
+                email:
+                    type: string
+                password:
+                    type: string
+            example:
+                email: mohamed1@gmail.com
+                password: "123456789"
+        RegisterRequest:
+            title: RegisterRequest
+            required:
+                - name
+                - email
+                - password
+            type: object
+            properties:
+                name:
+                    type: string
+                email:
+                    type: string
+                password:
+                    type: string
+            example:
+                name: abdo
+                email: abdo@gmail.com
+                password: "123456789"
+        CreateJobRequest:
+            title: CreateJobRequest
+            required:
+                - title
+                - company
+            type: object
+            properties:
+                title:
+                    type: string
+                company:
+                    type: string
+            example:
+                title: junior back-end developer
+                company: vertuoza
+        UpdateJobRequest:
+            title: UpdateJobRequest
+            optional:
+                - status
+                - title
+                - company
+            type: object
+            properties:
+                status:
+                    type: string
+                title:
+                    type: string
+                company:
+                    type: string
+            example:
+                status: interview
+                title: junior front-end developer
+                company: google
+    securitySchemes:
+        bearer:
+            type: http
+            scheme: bearer
+security: []
+tags:
+    - name: Auth
+    - name: Jobs
+      description: ""
